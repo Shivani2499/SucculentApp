@@ -1,0 +1,21 @@
+{
+  "name": "succulent-app",
+  "version": "1.1.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run start-react\" \"npm run start-electron\"",
+    "start-backend": "cd succulent-backend && npm run dev",
+    "start-react": "cd react-ui && npm start",
+    "start-electron": "wait-on tcp:3000 && electron main.js",
+    "build-react": "cd react-ui && npm run build",
+    "start-prod": "npm run build-react && electron ."
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^26.6.10",
+    "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.9.4"
+  }
+}
